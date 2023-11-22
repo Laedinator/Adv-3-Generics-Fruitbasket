@@ -33,13 +33,13 @@ public class FruitBasket<F extends Fruit> {
         return containsClass;
     }
 
-    public <F> Object get() {
+    public  F get() {
 //        returns the first (earliest added fruit from the basket and removes it)
         if (contents.isEmpty()) {
             System.out.println("The basket is empty.");
             return null;
         }
-        Object objectToRemove = get(0);
+        F objectToRemove = get(0);
         boolean remove = contents.remove(objectToRemove);
         if (!remove) {
             return null;
@@ -47,11 +47,11 @@ public class FruitBasket<F extends Fruit> {
         return objectToRemove;
     }
 
-    private <F> Object get(int index) {
+    private F get(int index) {
         if (index == contents.size()) {
             return contents.get(index - 1);
         }
-        Object oldestFruit = get(index + 1);
+        F oldestFruit = get(index + 1);
         if (index <= contents.indexOf(oldestFruit)) {
             return contents.get(index);
         } else {
